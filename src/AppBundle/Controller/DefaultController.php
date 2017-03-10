@@ -28,6 +28,15 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/", name="navbar")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function navbarAction()
+    {
+        return $this->render('default/navbar.html.twig');
+    }
+
+    /**
      * @Route("/show/{id}",name="show")
      */
     public function showAction(Request $request, $id)

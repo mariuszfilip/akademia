@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8"/>
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            <link href="styles/css/bootstrap.min.css" rel="stylesheet">
-            <link href="styles/css/app.min.css" rel="stylesheet">
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="styles/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles/css/app.min.css" rel="stylesheet">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+{% block navbar %}
+    {{ render(controller('AppBundle:Default:navbar')) }}
+{% endblock %}
 
-        {% endblock %}
-    </body>
+{% block body %}
 
-    <footer>
-        {% block javascripts %}
-            <script type="text/javascript" src="js/jquery.min.js"></script>
-            <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        {% endblock %}
-    </footer>
+{% endblock %}
+</body>
+
+<footer>
+    {% block javascripts %}
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    {% endblock %}
+</footer>
 </html>
