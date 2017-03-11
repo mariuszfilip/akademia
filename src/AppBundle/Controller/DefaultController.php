@@ -3,10 +3,13 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Calculate;
+use AppBundle\Entity\PageInfo;
+use AppBundle\Forms\Page;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Entity\PageInfoShow as PageInfo;
+use AppBundle\Entity\PageInfoShow;
 use AppBundle\Entity\PageInfoDescription;
 
 
@@ -17,7 +20,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $page = new PageInfo();
+        $page = new PageInfoShow();
         $page->setTitle("Title");
         $page->setDescription("Desc");
 
@@ -41,4 +44,47 @@ class DefaultController extends Controller
             'page'=>$page
         ]);
     }
+
+    /**
+     * @Route("add",name="add_page")
+     */
+    public function addAction(Request $request){
+
+        $pageInfo = new PageInfo();
+        $form = $this->createForm(Page::class,$pageInfo);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $pageInfo = $form->getData();
+
+            var_dump($pageInfo);
+
+            exit();
+
+
+        }
+
+
+        return $this->render('default/add.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            'form'=>$form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("calculate",name="calculate")
+     */
+    public function calculateAction(){
+        $calculate = new Calculate();
+
+
+        $form = $this->createForm(\AppBundle\Forms\Calculate::class,$calculate);
+
+
+        return $this->render('default/calculate.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            'form'=>$form->createView()
+        ]);
+    }
+
 }
