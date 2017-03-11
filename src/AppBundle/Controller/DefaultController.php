@@ -74,11 +74,24 @@ class DefaultController extends Controller
     /**
      * @Route("calculate",name="calculate")
      */
-    public function calculateAction(){
+    public function calculateAction(Request $request){
         $calculate = new Calculate();
+        $calculate->saveDb();
 
 
         $form = $this->createForm(\AppBundle\Forms\Calculate::class,$calculate);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $calculate = $form->getData();
+
+            //Todo send email
+            //Todo save db
+            //Todo save to file
+            var_dump($calculate);
+            exit();
+
+        }
 
 
         return $this->render('default/calculate.html.twig', [

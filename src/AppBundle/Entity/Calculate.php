@@ -13,4 +13,9 @@ class Calculate{
     private $liczba1;
     private $liczba2;
 
+    public function saveDb()
+    {
+    }
+
+
 }
