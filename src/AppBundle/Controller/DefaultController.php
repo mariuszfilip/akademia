@@ -51,6 +51,7 @@ class DefaultController extends Controller
     public function addAction(Request $request){
 
         $pageInfo = new PageInfo();
+        echo $pageInfo;
         $form = $this->createForm(Page::class,$pageInfo);
         $form->handleRequest($request);
 

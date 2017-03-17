@@ -10,6 +10,15 @@ namespace AppBundle\Entity;
 
 class Calculate{
 
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 10,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
+     */
     private $liczba1;
     private $liczba2;
 

@@ -86,8 +86,10 @@ class PageInfo{
 
 
 
-
-
+    public function __toString()
+    {
+        return $this->getTitle().':' .$this->getDescription();
+    }
 
 
 }
