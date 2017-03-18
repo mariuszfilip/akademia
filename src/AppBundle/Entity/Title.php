@@ -1,19 +1,27 @@
-<?php
 /**
- * Created by PhpStorm.
- * User: mariusz
- * Date: 04.03.17
- * Time: 10:53
- */
+* @ORM\Entity
+* @ORM\Table(name="product")
+*/
+class Product
+{
+/**
+* @ORM\Column(type="integer")
+* @ORM\Id
+* @ORM\GeneratedValue(strategy="AUTO")
+*/
+protected $id;
 
-namespace AppBundle\Entity;
+/**
+* @ORM\Column(name="title",type="string", length=100)
+*/
+protected $name;
 
+/**
+* @ORM\Column(type="decimal", scale=2)
+*/
+protected $price;
 
-class Title{
-
-    public function __construct($title)
-    {
-
-    }
-
-}
+/**
+* @ORM\Column(type="text")
+*/
+prote
