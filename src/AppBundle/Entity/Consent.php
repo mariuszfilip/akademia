@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Consent
 {
     /**
-     * @var string
+     * @var integer
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
@@ -30,7 +30,7 @@ class Consent
     private $name;
 
     /**
-     * @return string
+     * @return integer
      */
     public function getId()
     {
@@ -38,7 +38,7 @@ class Consent
     }
 
     /**
-     * @param string $id
+     * @param integer $id
      */
     public function setId($id)
     {

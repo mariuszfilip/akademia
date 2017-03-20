@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12">
+        <div class="col-lg-1"></div>
+
+        <div class="main-body-container col-lg-10"><h1>Dodaj nowy wniosek</h1>
+
+            {{ form_start(formNewProposal) }}
+            {{ form_widget(formNewProposal) }}
+
+            <button type="submit">Save</button>
+
+            {{ form_end(formNewProposal) }}
+        </div>
+
+        <div class="col-lg-1"></div>
+    </div>
+
+
+{% endblock %}

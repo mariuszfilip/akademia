@@ -19,10 +19,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Proposal
 {
     /**
-     * @var string
-     * @ORM\Column(type="guid")
+     * @var int
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="UUID")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
      */
     protected $id;
     /**
@@ -52,7 +52,7 @@ class Proposal
     private $date_add;
 
     /**
-     * @return string
+     * @return int
      */
     public function getId()
     {
@@ -60,7 +60,7 @@ class Proposal
     }
 
     /**
-     * @param string $id
+     * @param int $id
      */
     public function setId($id)
     {
