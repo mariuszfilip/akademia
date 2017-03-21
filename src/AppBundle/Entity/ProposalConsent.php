@@ -17,9 +17,10 @@ use Doctrine\ORM\Mapping as ORM;
 class ProposalConsent
 {
     /**
-     * @ORM\Column(type="guid")
+     * @var integer
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="UUID")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
      */
     protected $id;
     /**
@@ -41,7 +42,7 @@ class ProposalConsent
     private $is_checked;
 
     /**
-     * @return string
+     * @return int
      */
     public function getId()
     {
@@ -49,7 +50,7 @@ class ProposalConsent
     }
 
     /**
-     * @param string $id
+     * @param int $id
      */
     public function setId($id)
     {
@@ -57,7 +58,7 @@ class ProposalConsent
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getProposalId()
     {
@@ -65,7 +66,7 @@ class ProposalConsent
     }
 
     /**
-     * @param string $proposal_id
+     * @param int $proposal_id
      */
     public function setProposalId($proposal_id)
     {
