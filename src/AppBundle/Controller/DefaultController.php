@@ -89,6 +89,9 @@ class DefaultController extends Controller
         $calculate = new Calculate();
         $calculate->saveDb();
 
+        $calculateRepo = $this->get("app.entity.repository_calculate");
+       // $calculateEntity = $calculateRepo->findById(1);
+       // var_dump($calculateEntity);
 
         $form = $this->createForm(\AppBundle\Forms\Calculate::class,$calculate);
         $form->handleRequest($request);
@@ -113,7 +116,5 @@ class DefaultController extends Controller
 
 
     public function repoAction(){
-        $calculateRepo = $this->get("app.entity.repository_calculate");
-        $calculateEntity = $calculateRepo->findById(1);
     }
 }

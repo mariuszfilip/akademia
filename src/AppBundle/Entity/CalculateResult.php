@@ -10,8 +10,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name = "calculate_results","repository"="AppBundle\Repository\CalculateRepo")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CalculateRepo")
+ * @ORM\Table(name = "calculate_results")
  */
 class CalculateResult{
     /**

@@ -9,9 +9,9 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\CalculateResult;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 
-class CalculateRepo extends EntityManager implements CalculateRepoInterface {
+class CalculateRepo extends EntityRepository implements CalculateRepoInterface {
 
     /**
      * @param CalculateResult $calculateResult
@@ -19,8 +19,8 @@ class CalculateRepo extends EntityManager implements CalculateRepoInterface {
      */
     public function save(CalculateResult $calculateResult)
     {
-       $this->persist($calculateResult);
-       $this->flush();
+       $this->getEntityManager()->persist($calculateResult);
+       $this->getEntityManager()->flush();
     }
 
     /**
