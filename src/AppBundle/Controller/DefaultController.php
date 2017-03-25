@@ -111,4 +111,9 @@ class DefaultController extends Controller
         ]);
     }
 
+
+    public function repoAction(){
+        $calculateRepo = $this->get("app.entity.repository_calculate");
+        $calculateEntity = $calculateRepo->findById(1);
+    }
 }

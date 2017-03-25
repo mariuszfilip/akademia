@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name = "calculate_results")
+ * @ORM\Table(name = "calculate_results","repository"="AppBundle\Repository\CalculateRepo")
  */
 class CalculateResult{
     /**
