@@ -11,9 +11,10 @@ namespace AppBundle\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProposalRepository")
  * @ORM\Table(name="proposals")
  * */
 class Proposal
@@ -50,6 +51,14 @@ class Proposal
      * @ORM\Column(name="date_add", type="date")
      */
     private $date_add;
+
+    /**
+     * Proposal constructor.
+     */
+    public function __construct()
+    {
+        if (!$this->date_add) $this->date_add = new DateTime('now');
+    }
 
     /**
      * @return int

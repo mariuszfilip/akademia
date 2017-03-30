@@ -2,16 +2,52 @@
 
 {% block body %}
     <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12">
-        <div class="col-lg-1"></div>
+        <div style="text-align: center;"
+             class="main-body-container col-lg-10 col-md-12 col-xs-12 col-sm-12 col-md-offset-1 col-lg-offset-1">
+            <div class="bigger-font col-lg-8 col-md-8 col-sm-12 col-xs-12 col-md-offset-2 col-lg-offset-2">
+                <h1>Dodaj nowy wniosek</h1>
+                {{ form_start(formNewProposal) }}
 
-        <div class="main-body-container col-lg-10"><h1>Dodaj nowy wniosek</h1>
+                <div class="form-group form-bottom-offset col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                        {{ form_label(formNewProposal.loan_amount) }}:
+                    </div>
+                    <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
+                        {{ form_widget(formNewProposal.loan_amount) }}
+                    </div>
+                </div>
+                <div class="form-group form-bottom-offset col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                        {{ form_label(formNewProposal.loan_duration) }}:
+                    </div>
+                    <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
+                        {{ form_widget(formNewProposal.loan_duration) }}
+                    </div>
+                </div>
+                <div class="form-group form-bottom-offset col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                        {{ form_label(formNewProposal.phone_number) }}:
+                    </div>
+                    <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
+                        {{ form_widget(formNewProposal.phone_number) }}
+                    </div>
+                </div>
+                <div class="form-group form-bottom-offset col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                        {{ form_label(formNewProposal.email) }}:
+                    </div>
+                    <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
+                        {{ form_widget(formNewProposal.email) }}
+                    </div>
+                </div>
+                {{ form_widget(formNewProposal) }}
 
-            {{ form_start(formNewProposal) }}
-            {{ form_widget(formNewProposal) }}
 
-            <button type="submit">Save</button>
-
-            {{ form_end(formNewProposal) }}
+                <button class="btn btn-default" type="submit">Wyślij wniosek</button>
+                {{ form_end(formNewProposal) }}
+                <br/>
+                <br/>
+            </div>
         </div>
 
         <div class="col-lg-1"></div>

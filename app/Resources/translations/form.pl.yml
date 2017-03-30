@@ -1,0 +1,5 @@
+fields:
+    loan_amount: "Kwota kredytu"
+    loan_duration: "Okres kredytowania"
+    phone_number: "Numer telefonu"
+    email: "Adres e-mail"

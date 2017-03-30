@@ -28,6 +28,16 @@ class Consent
      * @ORM\Column(name="name", type="string", length=255 )
      */
     private $name;
+    /**
+     * @var string
+     * @ORM\Column(name="field_name", type="string", length=255 )
+     */
+    private $field_name;
+    /**
+     * @var integer
+     * @ORM\Column(name="status", type="integer")
+     */
+    private $status = 0;
 
     /**
      * @return integer
@@ -60,4 +70,37 @@ class Consent
     {
         $this->name = $name;
     }
+
+    /**
+     * @return string
+     */
+    public function getFieldName()
+    {
+        return $this->field_name;
+    }
+
+    /**
+     * @param string $field_name
+     */
+    public function setFieldName($field_name)
+    {
+        $this->field_name = $field_name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param int $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
 }
