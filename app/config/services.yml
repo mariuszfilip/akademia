@@ -4,10 +4,15 @@ parameters:
 #    parameter_name: value
 
 services:
-    app.entity.repository_calculate:
-        class: AppBundle\Repository\CalculateRepo
-        factory:
+  app.entity.repository_calculate:
+      class: AppBundle\Repository\CalculateRepo
+      factory:
                - "@doctrine.orm.entity_manager"
                - getRepository
-        arguments:
-                - AppBundle\Entity\CalculateResult
+      arguments:
+               - AppBundle\Entity\CalculateResult
+  app.service_calculate:
+      class: AppBundle\Service\CalculateService
+      arguments : ['@app.entity.repository_calculate']
+
+

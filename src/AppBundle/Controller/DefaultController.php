@@ -24,6 +24,10 @@ class DefaultController extends Controller
         $page->setTitle("Title");
         $page->setDescription("Desc");
 
+        $calculateRepo = $this->get("app.service_calculate");
+        // $calculateEntity = $calculateRepo->findById(1);
+        // var_dump($calculateEntity);
+
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..') . DIRECTORY_SEPARATOR,
             'page' => $page
