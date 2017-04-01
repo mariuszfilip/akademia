@@ -13,10 +13,13 @@ use AppBundle\Entity\PageInfoShow;
 use AppBundle\Entity\PageInfoDescription;
 
 
+/**
+ * @Route("calculate",name="add_page")
+ */
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/add", name="homepage")
      */
     public function indexAction(Request $request)
     {
@@ -24,6 +27,8 @@ class DefaultController extends Controller
         $page->setTitle("Title");
         $page->setDescription("Desc");
 
+
+        $this->getDoctrine()->getEntityManager();
         $calculateRepo = $this->get("app.service_calculate");
         // $calculateEntity = $calculateRepo->findById(1);
         // var_dump($calculateEntity);
@@ -60,7 +65,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("add",name="add_page")
+     * @Route("calcadd",name="add_page")
      */
     public function addAction(Request $request){
 
