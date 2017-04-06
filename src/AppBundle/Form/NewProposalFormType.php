@@ -31,7 +31,8 @@ class NewProposalFormType extends AbstractType
                 'label' => 'Adres email',
                 'attr' => [
                     'class' => 'form-control']
-            ]);
+            ])
+            ->add('photo', FileType::class, array('label' => 'Zdjęcie'));
     }
 
 
