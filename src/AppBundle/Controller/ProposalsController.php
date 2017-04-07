@@ -94,7 +94,6 @@ class ProposalsController extends Controller
 
         return $this->render('proposals/dziekujemy.html.twig', [
             'proposal' => $proposal
-
         ]);
     }
 

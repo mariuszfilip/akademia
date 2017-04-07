@@ -82,9 +82,9 @@ class ProposalConsent
     }
 
     /**
-     * @param int $consent
+     * @param Consent $consent
      */
-    public function setConsent($consent)
+    public function setConsent(Consent $consent)
     {
         $this->consent = $consent;
     }
