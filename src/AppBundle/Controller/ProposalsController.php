@@ -47,8 +47,22 @@ class ProposalsController extends Controller
 
         if ($formNewProposal->isSubmitted() && $formNewProposal->isValid()) {
             $proposal = $formNewProposal->getData();
+
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $proposal->getPhoto();
+
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            $file->move(
+                $this->getParameter('zdjecia_directory'),
+                $fileName
+            );
+
+            $proposal->setPhoto($fileName);
+
             $em->persist($proposal);
             $em->flush();
+            $id = $proposal->getId();
 
             foreach ($consents as $consent) {
                 $proposalConsent = new ProposalConsent();
@@ -59,7 +73,7 @@ class ProposalsController extends Controller
             }
             $em->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('dziekujemy', array('proposal_id' => $id));
         }
 
         return $this->render('proposals/new.html.twig', [
@@ -67,6 +81,20 @@ class ProposalsController extends Controller
         ]);
 
 
+    }
+
+    /**
+     * @Route("/dziekujemy/proposal_id/{proposal_id}", name="dziekujemy")
+     */
+    public function  dziekujemyAction($proposal_id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $proposal  = $em->getRepository('AppBundle:Proposal')->findOneBy(['id'=>$proposal_id]);
+
+        return $this->render('proposals/dziekujemy.html.twig', [
+            'proposal' => $proposal
+
+        ]);
     }
 
 

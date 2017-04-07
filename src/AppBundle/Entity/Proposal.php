@@ -53,6 +53,14 @@ class Proposal
     private $date_add;
 
     /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="Dodaj zdjęcie w formacie jpeg.")
+     * @Assert\File(mimeTypes={ "image/jpeg" })
+     */
+    private $photo;
+
+    /**
      * Proposal constructor.
      */
     public function __construct()
@@ -156,5 +164,16 @@ class Proposal
         $this->date_add = $date_add;
     }
 
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
 
 }

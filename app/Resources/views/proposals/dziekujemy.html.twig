@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12">
+        <div style="text-align: center;"
+             class="main-body-container col-lg-10 col-md-12 col-xs-12 col-sm-12 col-md-offset-1 col-lg-offset-1">
+            <div class="bigger-font col-lg-8 col-md-8 col-sm-12 col-xs-12 col-md-offset-2 col-lg-offset-2">
+
+
+                <img src="{{ asset('uploads/zdjecia/' ~ proposal.photo) }}"/>
+
+            </div>
+        </div>
+
+        <div class="col-lg-1"></div>
+    </div>
+
+
+{% endblock %}
