@@ -24,17 +24,17 @@ class ProposalConsent
      */
     protected $id;
     /**
-     * @var string
+     * @var Proposal
      * @ORM\ManyToOne(targetEntity="Proposal")
      * @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
      */
-    private $proposal_id;
+    private $proposal;
     /**
-     * @var int
+     * @var Consent
      * @ORM\ManyToOne(targetEntity="Consent")
      * @ORM\JoinColumn(name="consent_id", referencedColumnName="id")
      */
-    private $consent_id;
+    private $consent;
     /**
      * @var bool
      * @ORM\Column(name="is_checked", type="boolean")
@@ -58,35 +58,35 @@ class ProposalConsent
     }
 
     /**
-     * @return int
+     * @return Proposal
      */
-    public function getProposalId()
+    public function getProposal()
     {
-        return $this->proposal_id;
+        return $this->proposal;
     }
 
     /**
-     * @param int $proposal_id
+     * @param Proposal $proposal
      */
-    public function setProposalId($proposal_id)
+    public function setProposal(Proposal $proposal)
     {
-        $this->proposal_id = $proposal_id;
+        $this->proposal = $proposal;
     }
 
     /**
-     * @return int
+     * @return Consent
      */
-    public function getConsentId()
+    public function getConsent()
     {
-        return $this->consent_id;
+        return $this->consent;
     }
 
     /**
-     * @param int $consent_id
+     * @param int $consent
      */
-    public function setConsentId($consent_id)
+    public function setConsent($consent)
     {
-        $this->consent_id = $consent_id;
+        $this->consent = $consent;
     }
 
     /**

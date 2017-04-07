@@ -12,6 +12,7 @@ namespace AppBundle\Entity;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProposalRepository")
@@ -172,8 +173,6 @@ class Proposal
     public function setPhoto($photo)
     {
         $this->photo = $photo;
-
-        return $this;
     }
 
 }

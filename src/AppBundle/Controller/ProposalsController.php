@@ -35,8 +35,8 @@ class ProposalsController extends Controller
             $formNewProposal
                 ->add($consent->getFieldName(), CheckboxType::class,
                     [
-//                        'data_class' => ProposalConsent::class,
-                        'required'=>false,
+                        'mapped' => false,
+                        'required' => true,
                         'label' => $consent->getName(),
                         'attr' => ['id' => $consent->getId(), 'class' => 'form-control']
                     ]);
@@ -51,7 +51,7 @@ class ProposalsController extends Controller
             /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $file */
             $file = $proposal->getPhoto();
 
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
 
             $file->move(
                 $this->getParameter('zdjecia_directory'),
@@ -66,9 +66,10 @@ class ProposalsController extends Controller
 
             foreach ($consents as $consent) {
                 $proposalConsent = new ProposalConsent();
-                $proposalConsent->setConsentId($consent->getId());
-                $proposalConsent->setProposalId($proposal->getId());
+                $proposalConsent->setConsent($consent);
+                $proposalConsent->setProposal($proposal);
                 $proposalConsent->setIsChecked(true);
+                var_dump($proposalConsent);
                 $em->persist($proposalConsent);
             }
             $em->flush();
@@ -86,10 +87,10 @@ class ProposalsController extends Controller
     /**
      * @Route("/dziekujemy/proposal_id/{proposal_id}", name="dziekujemy")
      */
-    public function  dziekujemyAction($proposal_id)
+    public function dziekujemyAction($proposal_id)
     {
         $em = $this->getDoctrine()->getManager();
-        $proposal  = $em->getRepository('AppBundle:Proposal')->findOneBy(['id'=>$proposal_id]);
+        $proposal = $em->getRepository('AppBundle:Proposal')->findOneBy(['id' => $proposal_id]);
 
         return $this->render('proposals/dziekujemy.html.twig', [
             'proposal' => $proposal
