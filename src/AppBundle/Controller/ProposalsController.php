@@ -48,7 +48,7 @@ class ProposalsController extends Controller
         if ($formNewProposal->isSubmitted() && $formNewProposal->isValid()) {
             $proposal = $formNewProposal->getData();
 
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $file */
             $file = $proposal->getPhoto();
 
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
