@@ -26,6 +26,22 @@ class ProposalsController extends Controller
 
         $formNewProposal = $this->createForm(NewProposalFormType::class);
 
+        /**
+         * @var Consent[] $consents
+         */
+        $consents = $em->getRepository(Consent::class)->findAll();
+        foreach ($consents as $consent) {
+            $formNewProposal
+                ->add($consent->getFieldName(), CheckboxType::class,
+                    [
+                        'mapped' => false,
+                        'required' => true,
+                        'label' => $consent->getName(),
+                        'attr' => ['id' => $consent->getId(), 'class' => 'form-control']
+                    ]);
+        }
+
+
         $formNewProposal->handleRequest($request);
 
         if ($formNewProposal->isSubmitted() && $formNewProposal->isValid()) {
@@ -46,6 +62,15 @@ class ProposalsController extends Controller
             $em->persist($proposal);
             $em->flush();
             $id = $proposal->getId();
+
+            foreach ($consents as $consent) {
+                $proposalConsent = new ProposalConsent();
+                $proposalConsent->setConsent($consent);
+                $proposalConsent->setProposal($proposal);
+                $proposalConsent->setIsChecked(true);
+                $em->persist($proposalConsent);
+            }
+            $em->flush();
 
             return $this->redirectToRoute('dziekujemy', array('proposal_id' => $id));
         }
