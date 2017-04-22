@@ -23,6 +23,11 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+
+        $repo = $this->get('app.entity.repository_proposal');
+        $propsal = $repo->findOneBy(array('id'=>1));
+        var_dump($propsal);
+        exit();
         $page = new PageInfoShow();
         $page->setTitle("Title");
         $page->setDescription("Desc");
@@ -35,7 +40,8 @@ class DefaultController extends Controller
 
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..') . DIRECTORY_SEPARATOR,
-            'page' => $page
+            'page' => $page,
+            'proposal'=>$propsal
         ]);
     }
 

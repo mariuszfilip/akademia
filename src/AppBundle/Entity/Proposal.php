@@ -51,6 +51,14 @@ class Proposal
      */
     private $date_add;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Client",fetch="LAZY")
+     * @ORM\JoinColumn(name="client_id",referencedColumnName="client_id")
+     *
+     */
+    private $client;
+
     /**
      * @return string
      */
@@ -145,6 +153,22 @@ class Proposal
     public function setDateAdd(DateTime $date_add)
     {
         $this->date_add = $date_add;
+    }
+
+    /**
+     * @return Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * @param mixed $client
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
     }
 
 
