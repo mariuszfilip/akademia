@@ -51,6 +51,14 @@ class Proposal
      */
     private $date_add;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Client",fetch="LAZY")
+     * @ORM\JoinColumn(name="client_id",referencedColumnName="client_id")
+     *
+     */
+    private $client;
+
     /**
      * @ORM\ManyToOne(targetEntity="Client",fetch="LAZY")
      * @ORM\JoinColumn(name="client_id",referencedColumnName="client_id", nullable=true)
@@ -162,13 +170,20 @@ class Proposal
     }
 
     /**
+<<<<<<< HEAD
      * @param Client $client
+=======
+     * @param mixed $client
+>>>>>>> ce2a5d6e2921d5a033a76d0f088a885435c6a6de
      */
     public function setClient($client)
     {
         $this->client = $client;
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ce2a5d6e2921d5a033a76d0f088a885435c6a6de
 
 }
