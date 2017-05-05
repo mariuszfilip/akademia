@@ -13,7 +13,7 @@ use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProposalRepo")
  * @ORM\Table(name="proposals")
  * */
 class Proposal
@@ -50,6 +50,12 @@ class Proposal
      * @ORM\Column(name="date_add", type="date")
      */
     private $date_add;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Client",fetch="LAZY")
+     * @ORM\JoinColumn(name="client_id",referencedColumnName="client_id", nullable=true)
+     */
+    private $client;
 
     /**
      * @return string
@@ -146,6 +152,23 @@ class Proposal
     {
         $this->date_add = $date_add;
     }
+
+    /**
+     * @return Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * @param Client $client
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+    }
+
 
 
 }

@@ -28,7 +28,13 @@ class DefaultController extends Controller
         $page->setDescription("Desc");
 
 
-        $this->getDoctrine()->getEntityManager();
+        $repo = $this->get('app.entity.repository_propsal');
+        $proposal = $repo->findById(1);
+
+        var_dump($proposal->getClient()->getSurname());
+
+        exit();
+
         $calculateRepo = $this->get("app.service_calculate");
         // $calculateEntity = $calculateRepo->findById(1);
         // var_dump($calculateEntity);
@@ -92,16 +98,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("calculate",name="calculate")
+     * @Route("calculateform",name="calculateform")
      */
     public function calculateAction(Request $request){
         $calculate = new Calculate();
-        $calculate->saveDb();
-
-        $calculateRepo = $this->get("app.entity.repository_calculate");
-       // $calculateEntity = $calculateRepo->findById(1);
-       // var_dump($calculateEntity);
-
         $form = $this->createForm(\AppBundle\Forms\Calculate::class,$calculate);
         $form->handleRequest($request);
 
@@ -122,8 +122,21 @@ class DefaultController extends Controller
             'form'=>$form->createView()
         ]);
     }
+    /**
+     * @Route("/proposal",name="proposal")
+     */
+    public function proposalAction(Request $request){
+        $repo = $this->get('app.entity.repository_propsal');
+        $proposal = $repo->findById(1);
+
+        var_dump($proposal);
+
+        var_dump($proposal->getClient());
+        var_dump($proposal->getClient()->getName());
 
 
-    public function repoAction(){
+
+        exit();
     }
+
 }

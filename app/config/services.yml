@@ -13,6 +13,12 @@ services:
                - AppBundle\Entity\CalculateResult
   app.service_calculate:
       class: AppBundle\Service\CalculateService
-      arguments : ['@app.entity.repository_calculate','%cz_produkcja%']
-
+      arguments : ['@app.entity.repository_calculate']
+  app.entity.repository_propsal:
+      class: AppBundle\Repository\ProposalRepo
+      factory:
+               - "@doctrine.orm.entity_manager"
+               - getRepository
+      arguments:
+               - AppBundle\Entity\Proposal
 
