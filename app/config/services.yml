@@ -14,19 +14,11 @@ services:
   app.service_calculate:
       class: AppBundle\Service\CalculateService
       arguments : ['@app.entity.repository_calculate']
-<<<<<<< HEAD
-  app.entity.repository_propsal:
-=======
   app.entity.repository_proposal:
->>>>>>> ce2a5d6e2921d5a033a76d0f088a885435c6a6de
       class: AppBundle\Repository\ProposalRepo
       factory:
                - "@doctrine.orm.entity_manager"
                - getRepository
       arguments:
                - AppBundle\Entity\Proposal
-<<<<<<< HEAD
-=======
-
->>>>>>> ce2a5d6e2921d5a033a76d0f088a885435c6a6de
 
