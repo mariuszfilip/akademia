@@ -21,8 +21,38 @@
 
 <footer>
     {% block javascripts %}
-        <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
         <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+        <script>
+
+            $(document).ready(function(){
+
+                $('#about').click(function(){
+                    jQuery.ajax({
+                        url: "{{ top_url }}/calculate/proposal",
+                        method: 'GET',
+                        async:true,
+                        dataType: 'json'
+                    }).done(function (data) {
+
+                        console.log(data);
+                        if(data.status == 1){
+                            alert("status poprawny "+data.info);
+                        }else{
+                            alert(data.info);
+                        }
+                    }).fail(function () {
+                        alert('Błąd systemu. Nie dodano produktu');
+                    });
+                    alert('poszlo');
+                })
+
+            });
+
+        </script>
     {% endblock %}
 </footer>
 </html>

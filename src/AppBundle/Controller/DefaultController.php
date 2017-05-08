@@ -26,28 +26,15 @@ class DefaultController extends Controller
 
         $repo = $this->get('app.entity.repository_proposal');
         $propsal = $repo->findOneBy(array('id'=>1));
-        var_dump($propsal);
-        exit();
         $page = new PageInfoShow();
         $page->setTitle("Title");
         $page->setDescription("Desc");
 
-
-        $repo = $this->get('app.entity.repository_propsal');
-        $proposal = $repo->findById(1);
-
-        var_dump($proposal->getClient()->getSurname());
-
-        exit();
-
-        $calculateRepo = $this->get("app.service_calculate");
-        // $calculateEntity = $calculateRepo->findById(1);
-        // var_dump($calculateEntity);
-
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..') . DIRECTORY_SEPARATOR,
             'page' => $page,
-            'proposal'=>$propsal
+            'proposal'=>$propsal,
+            'top_url'=>$request->getBaseUrl()
         ]);
     }
 
@@ -132,16 +119,8 @@ class DefaultController extends Controller
      * @Route("/proposal",name="proposal")
      */
     public function proposalAction(Request $request){
-        $repo = $this->get('app.entity.repository_propsal');
-        $proposal = $repo->findById(1);
-
-        var_dump($proposal);
-
-        var_dump($proposal->getClient());
-        var_dump($proposal->getClient()->getName());
-
-
-
+        $aData = array('status'=>1,'info'=>'Wszystko jest ok');
+        echo json_encode($aData);
         exit();
     }
 
