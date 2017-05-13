@@ -44,6 +44,7 @@ class UsersController extends FOSRestController
 
     public function postUserAction(Request $request)
     {
+        $data = [];
         try {
             $data = ['id' => 2, 'test' => 2, 'email' => $request->get('email'), 'name' => $request->get('name')];
 
@@ -52,7 +53,6 @@ class UsersController extends FOSRestController
             }
 
         } catch (\Exception $e) {
-            $data = [];
             $data['error_message'] = $e->getMessage();
             $data['error_trace'] = $e->getTraceAsString();
         }
