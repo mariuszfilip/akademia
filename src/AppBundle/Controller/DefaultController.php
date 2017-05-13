@@ -94,6 +94,9 @@ class DefaultController extends Controller
      * @Route("calculateform",name="calculateform")
      */
     public function calculateAction(Request $request){
+
+
+
         $calculate = new Calculate();
         $form = $this->createForm(\AppBundle\Forms\Calculate::class,$calculate);
         $form->handleRequest($request);
@@ -123,5 +126,7 @@ class DefaultController extends Controller
         echo json_encode($aData);
         exit();
     }
+
+
 
 }
